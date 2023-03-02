@@ -42,7 +42,7 @@ const Header = () => {
               {isLoggedIn ? (
                 <div>
                   <button
-                    classNameName="text-md px-6 py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
+                    className="text-md px-6 py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
                     onClick={() => handleLogOut()}
                   >
                     Logout
@@ -51,13 +51,13 @@ const Header = () => {
               ) : (
                 <div>
                   <button
-                    classNameName="text-md px-4 sm-hidden py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
+                    className="text-md px-4 sm-hidden py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
                     onClick={() => navigate("/login")}
                   >
                     Login
                   </button>
                   <button
-                    classNameName="text-md sm-hidden rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition-all hover:bg-blue-700 disabled:bg-gray-400"
+                    className="text-md sm-hidden rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition-all hover:bg-blue-700 disabled:bg-gray-400"
                     onClick={() => navigate("/signup")}
                   >
                     Sign Up
@@ -68,7 +68,7 @@ const Header = () => {
               <button
                 data-collapse-toggle="navbar-cta"
                 type="button"
-                className=" md:hidden px-2 py-2 mx-2 rounded focus:outlet-none hover:bg-gray-200 group"
+                className="md:hidden px-2 py-2 mx-2 rounded focus:outlet-none hover:bg-gray-200 group"
                 aria-expanded="false"
                 onClick={toggle}
               >
