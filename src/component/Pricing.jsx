@@ -16,6 +16,7 @@ function loadScript(src) {
 const _DEV_ = document.domain === "localhost";
 
 const Pricing = () => {
+  //  eslint-disable-next-line
   const [name, setName] = useState("Mehul");
 
   async function displayRazorpay() {

@@ -30,6 +30,7 @@ const VideoComponent = () => {
         navigate("/profileteacher");
       }
     }
+    // eslint-disable-next-line
   }, [videoValues]);
   const [inCall, setInCall] = useState(false);
   //   const [channelName, setChannelName] = useState("");
@@ -37,7 +38,7 @@ const VideoComponent = () => {
     <div>
       <h1 className="heading">Agora RTC NG SDK React Wrapper</h1>
       {appId ? (
-        <VideoCall setInCall={setInCall} channelName={channelName} />
+        <VideoCall setInCall={setInCall} channelName={channelName} inCall={inCall} />
       ) : (
         ""
       )}
