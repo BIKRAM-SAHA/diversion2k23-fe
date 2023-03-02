@@ -57,7 +57,7 @@ const Signuptut = () => {
       redirect: "follow",
     };
 
-    fetch("http://65.0.30.70:5000/teacher/register", requestOptions)
+    fetch(`${process.env.REACT_APP_MAIN_SERVER_URL}/teacher/register`, requestOptions)
       .then((response) => {
         // if (response.status !== 200) {
         //   throw new Error("something went wrong");

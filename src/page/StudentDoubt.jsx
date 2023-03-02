@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-import { LoginContext } from "../contexts/LoginContext";
 
-const socket = io.connect("http://43.204.36.222:4000");
+const socket = io.connect(`${process.env.REACT_APP_SOCKET_SERVER_URL}`);
 
 function StudentDoubt() {
   const studentId = JSON.parse(localStorage.getItem("user")).id;
@@ -44,7 +43,7 @@ function StudentDoubt() {
     };
 
     const result = await fetch(
-      "http://65.0.30.70:5000/agora/CallCredentials",
+      `${process.env.REACT_APP_MAIN_SERVER_URL}/agora/CallCredentials`,
       requestOptions
     )
       .then((response) => response.json())

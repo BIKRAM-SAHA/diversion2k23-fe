@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
-const socket = io.connect("http://43.204.36.222:4000");
+const socket = io.connect(`${process.env.REACT_APP_SOCKET_SERVER_URL}`);
 
 function TeacherDoubt() {
   const teacherId = JSON.parse(localStorage.getItem("user")).id;
@@ -20,6 +20,7 @@ function TeacherDoubt() {
           if (questionObj.studentId === studentId) {
             return false;
           }
+          return true;
         }),
       ]);
     });
@@ -61,7 +62,7 @@ function TeacherDoubt() {
     };
 
     const result = await fetch(
-      "http://65.0.30.70:5000/agora/CallCredentials",
+      `${process.env.REACT_APP_MAIN_SERVER_URL}/agora/CallCredentials`,
       requestOptions
     )
       .then((response) => response.json())
@@ -86,6 +87,7 @@ function TeacherDoubt() {
         if (question.studentId === studentId) {
           return false;
         }
+        return true;
       })
     );
   }; //TODO: handle it
@@ -101,12 +103,11 @@ function TeacherDoubt() {
           <div className="App-header w-1/2 bg-slate-300 p-12">
             {questions.map((questionObj) => {
               return (
-                <div className="flex justify-center">
-                  <div
-                    className="question http://localhost:56954/ p-10 flex-col border bg-slate-900 rounded-xl m-1"
-                    key={questionObj.studentId}
-                    studentId={questionObj.studentId}
-                  >
+                <div
+                  className="flex justify-center"
+                  key={questionObj.studentId}
+                >
+                  <div className="question p-10 flex-col border bg-slate-900 rounded-xl m-1">
                     <div className="text-white p-2 pl-0">Question:</div>
                     <textarea
                       className="p-4 rounded-xl"

@@ -21,7 +21,6 @@ const VideoComponent = () => {
   appId = videoValues?.appId || null;
   token = videoValues?.token;
   channelName = videoValues?.channel;
-  console.log(videoValues);
   const navigate = useNavigate();
   useEffect(() => {
     if (videoValues === null) {
@@ -34,7 +33,6 @@ const VideoComponent = () => {
   }, [videoValues]);
   const [inCall, setInCall] = useState(false);
   //   const [channelName, setChannelName] = useState("");
-  console.log(appId);
   return (
     <div>
       <h1 className="heading">Agora RTC NG SDK React Wrapper</h1>
@@ -73,14 +71,14 @@ const VideoCall = ({ setInCall, channelName }) => {
 
       client.on("user-unpublished", (user, type) => {
         console.log("unpublished", user, type);
-        if (type === "audio") {
-          user.audioTrack?.stop();
-        }
-        if (type === "video") {
-          setUsers((prevUsers) => {
-            return prevUsers.filter((User) => User.uid !== user.uid);
-          });
-        }
+        // if (type === "audio") {
+        //   user.audioTrack?.stop();
+        // }
+        // if (type === "video") {
+        //   setUsers((prevUsers) => {
+        //     return prevUsers.filter((User) => User.uid !== user.uid);
+        //   });
+        // }
       });
 
       client.on("user-left", (user) => {
@@ -111,6 +109,9 @@ const VideoCall = ({ setInCall, channelName }) => {
 };
 
 const Videos = ({ users, tracks }) => {
+  console.log("----------------------------------");
+  console.log(users);
+  console.log("----------------------------------");
   return (
     <div>
       <div id="videos">
@@ -139,6 +140,7 @@ export const Controls = ({ tracks, setStart, setInCall }) => {
 
   const mute = async (type) => {
     if (type === "audio") {
+      console.log(client.localTracks.trackMediaType);
       await tracks[0].setEnabled(!trackState.audio);
       setTrackState((ps) => {
         return { ...ps, audio: !ps.audio };
@@ -149,11 +151,11 @@ export const Controls = ({ tracks, setStart, setInCall }) => {
         return { ...ps, video: !ps.video };
       });
     }
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    });
-    stream.getTracks().forEach((track) => track.stop());
+    // const stream = await navigator.mediaDevices.getUserMedia({
+    //   video: true,
+    //   audio: true,
+    // });
+    // stream.getTracks().forEach((track) => track.stop());
   };
 
   const leaveChannel = async () => {

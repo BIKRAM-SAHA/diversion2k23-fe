@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Pricing from "../component/Pricing";
 import { LoginContext } from "../contexts/LoginContext";
 
 const Profilestudent = () => {
   const { userName } = useContext(LoginContext);
   const { userEmail } = useContext(LoginContext);
-  const { user } = useContext(LoginContext);
+  // const { user } = useContext(LoginContext);
 
   // useEffect( (e) => {
   // var requestOptions = {
@@ -13,7 +13,7 @@ const Profilestudent = () => {
   //   redirect: "follow",
   // };
 
-  // fetch("http://65.0.30.70:5000/user/profile", requestOptions)
+  // fetch(`${process.env.REACT_APP_MAIN_SERVER_URL}/user/profile`, requestOptions)
   //   .then((response) => response.json())
   //   .then((result) => {
   //     console.log(result);

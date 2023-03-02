@@ -28,9 +28,12 @@ const Pricing = () => {
       return;
     }
 
-    const data = await fetch("http://65.0.30.70:5000/payment/razorpay", {
-      method: "POST",
-    }).then((t) => t.json());
+    const data = await fetch(
+      `${process.env.REACT_APP_MAIN_SERVER_URL}/payment/razorpay`,
+      {
+        method: "POST",
+      }
+    ).then((t) => t.json());
 
     console.log(data);
 
@@ -41,7 +44,7 @@ const Pricing = () => {
       order_id: data.id,
       name: "Donation",
       description: "Thank you for nothing. Please give us some money",
-      image: "http://65.0.30.70:5000/logo.svg",
+      image: `${process.env.REACT_APP_MAIN_SERVER_URL}/logo.svg`,
       handler: function (response) {
         alert(response.razorpay_payment_id);
         alert(response.razorpay_order_id);

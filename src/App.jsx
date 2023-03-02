@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
@@ -54,7 +54,7 @@ function App() {
     setUserName("");
   };
   return (
-    <BrowserRouter>
+    <HashRouter>
       <LoginContext.Provider
         value={{
           isLoggedIn,
@@ -100,7 +100,7 @@ function App() {
         {/* <Feedbackpage /> */}
         <Footer />
       </LoginContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

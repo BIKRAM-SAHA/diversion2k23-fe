@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { LoginContext } from "../contexts/LoginContext";
 
 const Profiletut = () => {
@@ -13,7 +13,7 @@ const Profiletut = () => {
   //     redirect: "follow",
   //   };
 
-  //   fetch("http://65.0.30.70:5000/teacher/profile", requestOptions)
+  //   fetch(`${process.env.REACT_APP_MAIN_SERVER_URL}/teacher/profile`, requestOptions)
   //     .then((response) => response.json())
   //     .then((result) => {
   //       console.log(result);
